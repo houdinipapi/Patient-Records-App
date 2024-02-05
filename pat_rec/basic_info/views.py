@@ -3,11 +3,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import SignUpForm
+from .models import Patient
 
 
 # Create your views here.
 
 def index(request):
+    patients = Patient.objects.all()
+
+
     # Check to see if logging in
     if request.method == "POST":
         username = request.POST["username"]
@@ -25,7 +29,10 @@ def index(request):
             messages.error(request, "Invalid username or password.")
             return redirect("index")
     else:
-        return render(request, 'core/index.html', {})
+        return render(request, 'core/index.html',
+                      {
+                          "patients": patients
+                      })
 
 
 def logout_user(request):
