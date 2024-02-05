@@ -1,13 +1,37 @@
 {% extends "core/base.html" %}
-
 {% block title %}Sign In{% endblock %}
 
 {% block content %}
 
-    <h1>SIGN IN</h1>
+<div class="col-md-6 offset-md-3">
+    <h1>SIGN UP</h1>
+    <br>
+    <form action="{% url 'signup' %}" method="post">
+        {% csrf_token %}
+
+            {% if form.errors %}
+                <div class="alert alert-danger alert-dismissible FADE show" role="alert">
+                    <strong>Oops!</strong> Something went wrong.
+                    {% for field in form %}
+                        {% if field.errors %}
+                            {{ field.errors }}
+                        {% endif %}
+                    {% endfor %}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                    </button>
+                </div>
+            {% endif %}
+
+            {{ form.as_p }}
+        
+            <br>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
 
     <br>
 
+    <p>Already have an account? <a href="{% url 'index' %}">Log In</a></p>
     
+</div>
 
 {% endblock %}
