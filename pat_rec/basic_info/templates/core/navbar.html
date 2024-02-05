@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'index' %}">PATREC</a>
+    <a class="navbar-brand" href="{% url 'index' %}">PatRec</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -12,11 +12,15 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      {% if user.is_authenticated %}
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        
+    
         <li class="nav-item">
-          <a class="nav-link active" href="#">Link</a>
+          <a class="nav-link active" href="{% url 'logout' %}">Log Out</a>
         </li>
 
       </ul>
@@ -29,6 +33,17 @@
         />
         <button class="btn btn-outline-light" type="submit">Search</button>
       </form>
+      
+      {% else %}
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    
+        <li class="nav-item">
+          <a class="nav-link active" href="{% url 'index' %}">Log In</a>
+        </li>
+
+      </ul>
+      {% endif %}
+
     </div>
   </div>
 </nav>
