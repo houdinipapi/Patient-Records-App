@@ -1,0 +1,33 @@
+{% extends "core/base.html" %}
+
+{% block title %}Patient Information{% endblock %}
+
+{% block content %}
+
+    <div class="col-md-6 offset-md-3">
+
+        <h1>Patient Information</h1>
+
+        <!-- {{ patient_record }} -->
+
+        <div class="card">
+            <div class="card-header">
+                <h4><strong>{{ patient_record.first_name }} {{ patient_record.last_name }}</strong></h4>
+            </div>
+            <div class="card-body">
+                <p class="card-text"><strong>Email: </strong>{{ patient_record.email }}</p>
+                <p class="card-text"><strong>Phone: </strong>{{ patient_record.phone }}</p>
+                <p class="card-text"><strong>Address: </strong>{{ patient_record.address }}</p>
+                <p class="card-text"><strong>City: </strong>{{ patient_record.city }}</p>
+                <p class="card-text"><strong>State: </strong>{{ patient_record.state }}</p>
+                <p class="card-text"><strong>Zipcode: </strong>{{ patient_record.zipcode }}</p>
+                <p class="card-text"><strong>Date of Birth: </strong>{{ patient_record.dob }}</p>
+                <p class="card-text"><strong>Created at: </strong>{{ patient_record.created_at }}</p>
+                <p class="card-text"><strong>ID: </strong>{{ patient_record.id }}</p>
+                <a href="#" class="btn btn-primary">Back</a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

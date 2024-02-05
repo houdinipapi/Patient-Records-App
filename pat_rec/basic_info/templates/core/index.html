@@ -16,7 +16,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ patient }}</h5>
                             <p class="card-text"><strong>Created at: </strong>{{ patient.created_at }}</p>
-                            <a href="#" class="btn btn-primary">View</a>
+                            <a href="{% url 'record' patient.id %}" class="btn btn-primary">View</a>
                         </div>
                     </div>
                     <br>

@@ -68,3 +68,15 @@ def sign_up(request):
         "form": form
     })
 
+
+def patient_record(request, pk):
+    if request.user.is_authenticated:
+        patient_record = Patient.objects.get(id=pk)
+        return render(request, 'core/patient.html', {
+            "patient_record": patient_record
+        })
+    
+    else:
+        messages.error(request, "You must be logged in to view patient records.")
+        return redirect("index")
+
