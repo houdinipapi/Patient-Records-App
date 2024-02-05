@@ -24,9 +24,24 @@
                 <p class="card-text"><strong>Date of Birth: </strong>{{ patient_record.dob }}</p>
                 <p class="card-text"><strong>Created at: </strong>{{ patient_record.created_at }}</p>
                 <p class="card-text"><strong>ID: </strong>{{ patient_record.id }}</p>
-                <a href="#" class="btn btn-primary">Back</a>
+
+                
             </div>
         </div>
+
+        <br>
+
+        <div>
+
+            <a href="{% url 'index' %}" class="btn btn-primary">Back</a>
+
+            <a href="#" class="btn btn-success">Edit</a>
+
+            <a href="{% url 'delete_record' patient_record.id %}" class="btn btn-danger">Delete</a>
+
+        </div>
+
+        
 
     </div>
 

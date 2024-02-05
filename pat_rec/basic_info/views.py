@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import SignUpForm
+from .forms import SignUpForm, AddRecordForm
 from .models import Patient
 
 
@@ -78,5 +78,35 @@ def patient_record(request, pk):
     
     else:
         messages.error(request, "You must be logged in to view patient records.")
+        return redirect("index")
+    
+
+def add_patient(request):
+    form = AddRecordForm(request.POST or None)
+
+    if request.user.is_authenticated:
+        if request.method == "POST":
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Record added successfully!")
+                return redirect("index")
+            
+
+        return render(request, 'core/add_patient.html', {"form": form})
+    
+    else:
+        messages.error(request, "You must be logged in to add patient records.")
+        return redirect("index")
+
+
+def delete_patient(request, pk):
+    if request.user.is_authenticated:
+        delete_record = Patient.objects.get(id=pk)
+        delete_record.delete()
+        messages.success(request, "Record deleted successfully!")
+        return redirect("index")
+    
+    else:
+        messages.error(request, "You must be logged in to delete patient records.")
         return redirect("index")
 
