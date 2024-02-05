@@ -31,3 +31,8 @@ def logout_user(request):
     logout(request)
     messages.success(request, "You have successfully logged out.")
     return redirect("index")
+
+
+def sign_up(request):
+    return render(request, 'core/signup.html', {})
+
