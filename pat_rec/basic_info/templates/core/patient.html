@@ -35,6 +35,31 @@
 
         <br>
 
+        <div class="row">
+            <div class="col-sm-6 mb-3 mb-sm-0">
+                <div class="card">
+                    <div class="card-header">
+                        <p class="card-title"><strong>Diagnosis</strong></p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ patient_record.diagnosis }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <p class="card-title"><strong>Medical Prescription</strong></p>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">{{ patient_record.medical_prescription }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br>
+
         <div>
 
             <a href="{% url 'index' %}" class="btn btn-primary">Back</a>

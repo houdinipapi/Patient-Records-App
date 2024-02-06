@@ -131,6 +131,24 @@ class AddRecordForm(forms.ModelForm):
         label="Date of Birth",
     )
 
+    diagnosis = forms.CharField(
+        required=False,
+        widget=forms.widgets.Textarea(
+            attrs={"placeholder": "Diagnosis", "class": "form-control"}
+        ),
+        label="",
+    )
+
+    medical_prescription = forms.CharField(
+        required=False,
+        widget=forms.widgets.Textarea(
+            attrs={"placeholder": "Medical Prescription", "class": "form-control"}
+        ),
+        label="",
+    )
+
+    
+
     class Meta:
         model = Patient
         exclude = ("user",)

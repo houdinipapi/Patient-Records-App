@@ -13,6 +13,8 @@ class Patient(models.Model):
     city = models.CharField(max_length=100)
     state = models.CharField(max_length=50)
     zipcode = models.CharField(max_length=20)
+    diagnosis = models.TextField(blank=True, null=True)
+    medical_prescription = models.TextField(blank=True, null=True)
     created_by = models.ForeignKey(User, related_name= 'patients', on_delete=models.CASCADE, default=1)
 
     def __str__(self):
