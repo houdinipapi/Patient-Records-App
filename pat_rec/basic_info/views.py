@@ -97,6 +97,25 @@ def add_patient(request):
     else:
         messages.error(request, "You must be logged in to add patient records.")
         return redirect("index")
+    
+
+
+def edit_patient(request, pk):
+    if request.user.is_authenticated:
+        patient_record = Patient.objects.get(id=pk)
+        form = AddRecordForm(request.POST or None, instance=patient_record)
+
+        if request.method == "POST":
+            if form.is_valid():
+                form.save()
+                messages.success(request, "Record updated successfully!")
+                return redirect("index")
+
+        return render(request, 'core/update_record.html', {"form": form})
+    
+    else:
+        messages.error(request, "You must be logged in to edit patient records.")
+        return redirect("index")
 
 
 def delete_patient(request, pk):
