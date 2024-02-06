@@ -23,7 +23,11 @@
                 <p class="card-text"><strong>Zipcode: </strong>{{ patient_record.zipcode }}</p>
                 <p class="card-text"><strong>Date of Birth: </strong>{{ patient_record.dob }}</p>
                 <p class="card-text"><strong>Created at: </strong>{{ patient_record.created_at }}</p>
+                <p class="card-text"><strong>Created by: </strong>{{ patient_record.created_by }}</p>
                 <p class="card-text"><strong>ID: </strong>{{ patient_record.id }}</p>
+
+                <!-- <p>request.user: {{ request.user }}</p>
+                <p>created_by: {{ patient_record.created_by }}</p> -->
 
                 
             </div>
@@ -35,9 +39,13 @@
 
             <a href="{% url 'index' %}" class="btn btn-primary">Back</a>
 
+
+            {% if request.user == patient_record.created_by %}
             <a href="{% url 'edit_record' patient_record.id %}" class="btn btn-success">Edit</a>
 
             <a href="{% url 'delete_record' patient_record.id %}" class="btn btn-danger">Delete</a>
+
+            {% endif %}
 
         </div>
 
